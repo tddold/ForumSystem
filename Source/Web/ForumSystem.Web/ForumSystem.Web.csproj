@@ -197,7 +197,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -313,6 +312,16 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\ForumSystem.Data\ForumSystem.Data.csproj">
+      <Project>{ee4ab2fb-63ac-4cb5-b4c1-96bb1c7ccf31}</Project>
+      <Name>ForumSystem.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\ForumSystem.Models\ForumSystem.Models.csproj">
+      <Project>{79f5b146-4ae0-46d1-ba50-c7b69538807c}</Project>
+      <Name>ForumSystem.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
