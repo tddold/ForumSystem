@@ -314,6 +314,10 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Data\ForumSystem.Data.Common\ForumSystem.Data.Common.csproj">
+      <Project>{258345a8-9d84-45d0-9f10-561942b8573c}</Project>
+      <Name>ForumSystem.Data.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Data\ForumSystem.Data\ForumSystem.Data.csproj">
       <Project>{ee4ab2fb-63ac-4cb5-b4c1-96bb1c7ccf31}</Project>
       <Name>ForumSystem.Data</Name>
