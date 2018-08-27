@@ -1,5 +1,4 @@
-﻿using ForumSystem.Data;
-using ForumSystem.Data.Common.Repository;
+﻿using ForumSystem.Data.Common.Repository;
 using ForumSystem.Data.Models;
 using System.Web.Mvc;
 
