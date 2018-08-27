@@ -15,6 +15,8 @@ namespace ForumSystem.Data
             : base("DefaultConnection", throwIfV1Schema: false)
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
+
+
         }
 
         public static ApplicationDbContext Create()
