@@ -9,12 +9,6 @@ namespace ForumSystem.Web.Controllers
     {
         private readonly IRepository<Post> posts;
 
-        // Poor man's DI
-        public HomeController()
-            : this(new GenericRepository<Post>(new ApplicationDbContext()))
-        {
-
-        }
 
         public HomeController(IRepository<Post> posts)
         {
