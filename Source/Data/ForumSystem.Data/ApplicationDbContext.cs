@@ -1,7 +1,7 @@
 ﻿
 using ForumSystem.Data.Common.Models;
 using ForumSystem.Data.Migrations;
-using ForumSystem.Models;
+using ForumSystem.Data.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Data.Entity;
@@ -25,6 +25,8 @@ namespace ForumSystem.Data
         }
 
         public IDbSet<Tag> Tags { get; set; }
+
+        public IDbSet<Post> Posts { get; set; }
 
         public override int SaveChanges()
         {

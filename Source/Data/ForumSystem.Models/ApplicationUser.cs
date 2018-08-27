@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace ForumSystem.Models
+namespace ForumSystem.Data.Models
 {
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
     {

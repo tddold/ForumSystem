@@ -267,8 +267,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -323,9 +321,9 @@
       <Project>{ee4ab2fb-63ac-4cb5-b4c1-96bb1c7ccf31}</Project>
       <Name>ForumSystem.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Data\ForumSystem.Models\ForumSystem.Models.csproj">
+    <ProjectReference Include="..\..\Data\ForumSystem.Models\ForumSystem.Data.Models.csproj">
       <Project>{79f5b146-4ae0-46d1-ba50-c7b69538807c}</Project>
-      <Name>ForumSystem.Models</Name>
+      <Name>ForumSystem.Data.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

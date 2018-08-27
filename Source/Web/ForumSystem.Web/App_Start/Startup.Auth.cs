@@ -3,11 +3,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.Google;
 using Owin;
-using ForumSystem.Web.Models;
 using ForumSystem.Data;
-using ForumSystem.Models;
+using ForumSystem.Data.Models;
 
 namespace ForumSystem.Web
 {
