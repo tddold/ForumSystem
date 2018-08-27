@@ -1,4 +1,4 @@
-﻿namespace ForumSystem.Web.Infrastructure.Mapping
+﻿namespace ForumSystem.Common.Mapping
 {
     using AutoMapper;
 
