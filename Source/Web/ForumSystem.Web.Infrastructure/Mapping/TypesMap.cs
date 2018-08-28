@@ -1,7 +1,7 @@
-﻿namespace ForumSystem.Common.Mapping
-{
-    using System;
+﻿using System;
 
+namespace ForumSystem.Web.Infrastructure.Mapping
+{
     internal class TypesMap
     {
         public Type Source { get; set; }

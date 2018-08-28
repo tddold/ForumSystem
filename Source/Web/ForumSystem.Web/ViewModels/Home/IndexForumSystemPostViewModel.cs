@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using ForumSystem.Common.Mapping;
 using ForumSystem.Data.Models;
+using ForumSystem.Web.Infrastructure.Mapping;
 
 namespace ForumSystem.Web.ViewModels.Home
 {
@@ -8,10 +8,10 @@ namespace ForumSystem.Web.ViewModels.Home
     {
         public string Title { get; set; }
 
-        public void CreateMappings(IMapperConfigurationExpression configuration)
-        {
-            configuration.CreateMap<Post, IndexForumSystemPostViewModel>()
-                .IncludeBase<Post, IndexForumSystemPostViewModel>();
-        }
+        //public void CreateMappings(IMapperConfigurationExpression configuration)
+        //{
+        //    configuration.CreateMap<Post, IndexForumSystemPostViewModel>()
+        //        .IncludeBase<Post, IndexForumSystemPostViewModel>();
+        //}
     }
 }

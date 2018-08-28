@@ -1,10 +1,10 @@
-﻿using ForumSystem.Common.Constants;
+﻿using ForumSystem.Web.Infrastructure.Mapping;
 using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using ForumSystem.Common.Mapping;
+
 
 namespace ForumSystem.Web
 {
@@ -17,12 +17,10 @@ namespace ForumSystem.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            //var autoMapperConfig = new AutoMapperConfig();
-            //autoMapperConfig.Execute(Assembly.GetExecutingAssembly());
+            var autoMapperConfig = new AutoMapperConfig(Assembly.GetExecutingAssembly());
+            autoMapperConfig.Execute();
 
-            AutoMapperConfig.RegisterMappings(
-               Assembly.Load(AssemblyConstants.Web),
-               Assembly.Load(AssemblyConstants.WebInfrastructure));
+
         }
     }
 }
