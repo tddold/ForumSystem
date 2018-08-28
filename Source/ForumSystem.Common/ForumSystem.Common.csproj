@@ -59,5 +59,11 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Web\ForumSystem.Web.Infrastructure\ForumSystem.Web.Infrastructure.csproj">
+      <Project>{fd1b4836-aee0-4911-ba7a-666bdbc8ad46}</Project>
+      <Name>ForumSystem.Web.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

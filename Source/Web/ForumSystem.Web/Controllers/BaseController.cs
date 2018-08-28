@@ -2,6 +2,7 @@
 {
     using System.Web.Mvc;
     using AutoMapper;
+    using ForumSystem.Common.Mapping;
     using Infrastructure.Mapping;
 
     public abstract class BaseController : Controller
@@ -10,7 +11,7 @@
         {
             get
             {
-                return AutoMapperConfig.Configuration.CreateMapper();
+                return AutoMapperConfig.MapperConfiguration.CreateMapper();
             }
         }
     }

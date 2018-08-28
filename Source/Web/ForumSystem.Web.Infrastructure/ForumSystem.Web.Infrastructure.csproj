@@ -48,15 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mapping\AutoMapperConfig.cs" />
     <Compile Include="Mapping\AutoMapperMappingService.cs" />
     <Compile Include="Mapping\Contracts\IMappingService.cs" />
     <Compile Include="Mapping\Contracts\IService.cs" />
-    <Compile Include="Mapping\IHaveCustomMappings.cs" />
-    <Compile Include="Mapping\IMapBothWays{T}.cs" />
-    <Compile Include="Mapping\IMapFrom{T}.cs" />
-    <Compile Include="Mapping\IMapTo{T}.cs" />
-    <Compile Include="Mapping\QueryableExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
