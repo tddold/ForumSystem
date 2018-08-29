@@ -7,6 +7,7 @@ using ForumSystem.Web.Infrastructure.Mapping;
 using ForumSystem.Web.Infrastructure.Mapping.Contracts;
 using System.Linq;
 using System.Collections.Generic;
+using AutoMapper;
 
 namespace ForumSystem.Web.Controllers
 {
@@ -14,10 +15,12 @@ namespace ForumSystem.Web.Controllers
     {
         private readonly IRepository<Post> posts;
         //private IMappingService mappingService;
+        //private readonly IMapper mapper;
 
         public HomeController(IRepository<Post> posts)
         {
             this.posts = posts;
+            //this.mapper = mapper;
             //this.mappingService = mappingService;
         }
 
@@ -27,6 +30,8 @@ namespace ForumSystem.Web.Controllers
         public ActionResult Index()
         {
             var postsAll = this.posts.All().ToArray();
+            //var testPost = this.posts.All().Where(p => p.Title != null).Single();
+            //var test = this.mapper.Map<Post, IndexForumSystemPostViewModel>(testPost);
             //var allPosts = this.mappingService.MapCollection<IndexForumSystemPostViewModel>(posts);
 
 
