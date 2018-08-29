@@ -4,9 +4,48 @@
     ViewBag.Title = "Home Page";
 }
 
-<div>
+<div class="container">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Library</a></li>
+        <li class="breadcrumb-item active">Data</li>
+    </ol>
+   
     @foreach (var post in Model)
     {
-        <p>@post.Title</p>
+        <div class="row">
+
+            <div class="col-md-2">
+                <div class="well text-center">
+                    <div class="row">0</div>
+                    <div class="row">Answers</div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="well text-center">
+                    <div class="row">0</div>
+                    <div class="row">Answers</div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <h4>
+                        <a href="/123/ass-asd-asq">@post.Title</a>
+                    </h4>
+                </div>
+                <div class="row">
+                    <p>
+                        Easily insert dummy text into the editor in Visual Studio. Lorem Ipsum and other vocabularies are supported.
+                    </p>
+                </div>
+                <div class="row">
+                    <span class="label label-default">Dark</span>
+                    <label class="label label-default">Lable Dark</label>
+                    <span class="label label-default">Dark sfdfdff</span>
+                    <span class="label label-default">Dark</span>
+                </div>
+            </div>
+        </div>
+        <hr />
     }
 </div>

@@ -11,63 +11,105 @@
     {
         public static IConfigurationProvider MapperConfiguration { get; private set; }
 
-        private Assembly assembly;
-
-        public AutoMapperConfig(Assembly assembly)
+        public static void RegisterMappings(params Assembly[] assemblies)
         {
-            this.assembly = assembly;
-        }
+            var types = assemblies.SelectMany(a => a.GetExportedTypes()).ToList();
 
-        public void Execute()
-        {
-            var types = this.assembly.GetExportedTypes();
-
-            MapperConfiguration = new MapperConfiguration(conf =>
+            MapperConfiguration = new MapperConfiguration(configuration =>
             {
-                //RegisterStandardFromMappings(configuration, types);
+                RegisterStandardFromMappings(configuration, types);
 
-                //RegisterStandardToMappings(configuration, types);
+                RegisterStandardToMappings(configuration, types);
 
-                //RegisterCustomMaps(configuration, types);
-
-                LoadStandardMappings(conf, types);
-
-                LoadCustomMappings(conf, types);
-
+                RegisterCustomMaps(configuration, types);
             });
 
+            // TODO: MapperConfiguration.AssertConfigurationIsValid();
         }
 
-        private static void LoadStandardMappings(IProfileExpression conf, IEnumerable<Type> types)
+        private static void RegisterStandardFromMappings(IProfileExpression configuration, IEnumerable<Type> types)
         {
-            var maps = from t in types
-                       from i in t.GetInterfaces()
-                       where
-                           i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IMapFrom<>) && !t.IsAbstract
-                           && !t.IsInterface
-                       select new TypesMap
-                       {
-                           Source = i.GetGenericArguments()[0],
-                           Destination = t
-                       };
+            var maps = GetFromMaps(types);
 
+            CreateMappings(configuration, maps);
+        }
+
+        private static void RegisterStandardToMappings(IProfileExpression configuration, IEnumerable<Type> types)
+        {
+            var maps = GetToMaps(types);
+
+            CreateMappings(configuration, maps);
+        }
+
+        private static void RegisterCustomMaps(IMapperConfigurationExpression configuration, IEnumerable<Type> types)
+        {
+            var maps = GetCustomMappings(types);
+
+            CreateMappings(configuration, maps);
+        }
+
+        private static IEnumerable<IHaveCustomMappings> GetCustomMappings(IEnumerable<Type> types)
+        {
+            var customMaps = from t in types
+                             from i in t.GetInterfaces()
+                             where typeof(IHaveCustomMappings).IsAssignableFrom(t) &&
+                                !t.IsAbstract &&
+                                !t.IsInterface
+                             select (IHaveCustomMappings)Activator.CreateInstance(t);
+
+            return customMaps;
+        }
+
+        private static IEnumerable<TypesMap> GetFromMaps(IEnumerable<Type> types)
+        {
+            var fromMaps = from t in types
+                           from i in t.GetInterfaces()
+                           where i.IsGenericType &&
+                                 i.GetGenericTypeDefinition() == typeof(IMapFrom<>) &&
+                                 !t.IsAbstract &&
+                                 !t.IsInterface
+                           select new TypesMap
+                           {
+                               Source = i.GetGenericArguments()[0],
+                               Destination = t
+                           };
+
+            return fromMaps;
+        }
+
+        private static IEnumerable<TypesMap> GetToMaps(IEnumerable<Type> types)
+        {
+            var toMaps = from t in types
+                         from i in t.GetInterfaces()
+                         where i.IsGenericType &&
+                               i.GetGenericTypeDefinition() == typeof(IMapTo<>) &&
+                               !t.IsAbstract &&
+                               !t.IsInterface
+                         select new TypesMap
+                         {
+                             Source = t,
+                             Destination = i.GetGenericArguments()[0]
+                         };
+
+            return toMaps;
+        }
+
+        private static void CreateMappings(IProfileExpression configuration, IEnumerable<TypesMap> maps)
+        {
             foreach (var map in maps)
             {
-                conf.CreateMap(map.Source, map.Destination);
+                configuration.CreateMap(map.Source, map.Destination);
             }
         }
 
-        private static void LoadCustomMappings(IMapperConfigurationExpression conf, IEnumerable<Type> types)
+        private static void CreateMappings(
+            IMapperConfigurationExpression configuration,
+            IEnumerable<IHaveCustomMappings> maps)
         {
-            var maps = from t in types
-                       from i in t.GetInterfaces()
-                       where typeof(IHaveCustomMappings).IsAssignableFrom(t) && !t.IsAbstract && !t.IsInterface
-                       select (IHaveCustomMappings)Activator.CreateInstance(t);
-
             foreach (var map in maps)
             {
-                map.CreateMappings(Mapper.Configuration);
+                map.CreateMappings(configuration);
             }
-        }        
+        }
     }
 }

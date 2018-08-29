@@ -6,8 +6,11 @@ namespace ForumSystem.Web.App_Start
     using System;
     using System.Data.Entity;
     using System.Web;
+    using AutoMapper;
     using ForumSystem.Data;
     using ForumSystem.Data.Common.Repository;
+    using ForumSystem.Web.Infrastructure.Mapping;
+    using ForumSystem.Web.Infrastructure.Mapping.Contracts;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
     using Ninject;
@@ -70,7 +73,7 @@ namespace ForumSystem.Web.App_Start
 
             kernel.Bind(typeof(IRepository<>))
                 .To(typeof(GenericRepository<>));
-           
+
 
             //kernel.Bind(typeof(IMapper))
             //  .To(typeof(Mapper));
