@@ -13,11 +13,11 @@ namespace ForumSystem.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IRepository<Post> posts;
+        private readonly IDeletableEntityRepository<Post> posts;
         //private IMappingService mappingService;
         //private readonly IMapper mapper;
 
-        public HomeController(IRepository<Post> posts)
+        public HomeController(IDeletableEntityRepository<Post> posts)
         {
             this.posts = posts;
             //this.mapper = mapper;
@@ -29,6 +29,9 @@ namespace ForumSystem.Web.Controllers
        
         public ActionResult Index()
         {
+            this.posts.ActualDelete(this.posts.GetById(5));
+            this.posts.SaveChanges();
+
             var postsAll = this.posts.All().ToArray();
             //var testPost = this.posts.All().Where(p => p.Title != null).Single();
             //var test = this.mapper.Map<Post, IndexForumSystemPostViewModel>(testPost);

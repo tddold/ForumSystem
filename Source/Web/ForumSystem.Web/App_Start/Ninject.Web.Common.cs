@@ -9,6 +9,7 @@ namespace ForumSystem.Web.App_Start
     using AutoMapper;
     using ForumSystem.Data;
     using ForumSystem.Data.Common.Repository;
+    using ForumSystem.Data.Models;
     using ForumSystem.Web.Infrastructure.Mapping;
     using ForumSystem.Web.Infrastructure.Mapping.Contracts;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
@@ -68,12 +69,16 @@ namespace ForumSystem.Web.App_Start
         {
             kernel.Bind<DbContext>().To<ApplicationDbContext>();
 
+            kernel.Bind(typeof(IRepository<Post>)).To(typeof(IDeletableEntityRepository<Post>));
+
             kernel.Bind(typeof(IDeletableEntityRepository<>))
                 .To(typeof(DeletableEntityRepository<>));
 
             kernel.Bind(typeof(IRepository<>))
                 .To(typeof(GenericRepository<>));
 
+
+            //kernel.Bind<IMapper>().To<Mapper>();
 
             //kernel.Bind(typeof(IMapper))
             //  .To(typeof(Mapper));
