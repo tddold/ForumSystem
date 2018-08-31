@@ -1,5 +1,7 @@
 ﻿@model ForumSystem.Web.InputModels.Questions.AskInputModel
 @{
+    /**/
+
     ViewBag.Title = "Ask question";
 }
 
@@ -7,13 +9,22 @@
 
 @using (Html.BeginForm("Ask", "Questions", FormMethod.Post))
 {
-    @Html.LabelFor(model => model.Title)
-    @Html.EditorFor(model => model.Title)
+    <div class="form-group">
 
-    @Html.LabelFor(model => model.Content)
-    @Html.EditorFor(model => model.Content)
+        @Html.LabelFor(model => model.Title, new { @class = "col-md-2 control-lable" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Title, new { placeholder = "Title 123" })
+        </div>
+    </div>
 
-    @Html.LabelFor(model => model.Tags)
-    @Html.EditorFor(model => model.Tags)
+
+    <div class="row">
+        @Html.EditorFor(model => model.Content)
+    </div>
+
+    <div class="row">
+        @Html.LabelFor(model => model.Tags)
+        @Html.EditorFor(model => model.Tags, new { placeholder = "at least one tag such as (ruby-on-rails-3 pyton c), max 5 tags" })
+    </div>
 }
 
