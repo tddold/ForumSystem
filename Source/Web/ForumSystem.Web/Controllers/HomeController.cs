@@ -29,8 +29,8 @@ namespace ForumSystem.Web.Controllers
        
         public ActionResult Index()
         {
-            this.posts.ActualDelete(this.posts.GetById(5));
-            this.posts.SaveChanges();
+            //this.posts.ActualDelete(this.posts.GetById(5));
+            //this.posts.SaveChanges();
 
             var postsAll = this.posts.All().ToArray();
             //var testPost = this.posts.All().Where(p => p.Title != null).Single();
