@@ -13,6 +13,8 @@ namespace ForumSystem.Data.Models
 
         // TODO Author, ...
 
+        public string Content { get; set; }
+
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }
