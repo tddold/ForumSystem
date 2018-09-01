@@ -1,0 +1,20 @@
+﻿using Ganss.XSS;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ForumSystem.Web.Infrastructure
+{
+    public class HtmlSanitizerAdapter : ISanitizer
+    {
+        public string Sanitize(string html)
+        {
+            var sanitizer = new HtmlSanitizer();
+            var result = sanitizer.Sanitize(html);
+
+            return result;
+        }
+    }
+}
