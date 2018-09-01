@@ -10,6 +10,7 @@ namespace ForumSystem.Web.App_Start
     using ForumSystem.Data;
     using ForumSystem.Data.Common.Repository;
     using ForumSystem.Data.Models;
+    using ForumSystem.Web.Infrastructure;
     using ForumSystem.Web.Infrastructure.Mapping;
     using ForumSystem.Web.Infrastructure.Mapping.Contracts;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
@@ -76,6 +77,8 @@ namespace ForumSystem.Web.App_Start
 
             kernel.Bind(typeof(IRepository<>))
                 .To(typeof(GenericRepository<>));
+
+            kernel.Bind<ISanitizer>().To<HtmlSanitizerAdapter>();
 
 
             //kernel.Bind<IMapper>().To<Mapper>();
