@@ -22,8 +22,10 @@ namespace ForumSystem.Web
                         "~/Content/kendo/kendo.silver.min.css"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                       "~/Content/bootstrap.cosmo.css",
-                       "~/Content/site.css"));
+                       "~/Content/bootstrap.cosmo.css"));
+
+            bundles.Add(new StyleBundle("~/Content/custom").Include(
+                      "~/Content/site.css"));
         }
 
         private static void RegisterScriptBundles(BundleCollection bundles)
