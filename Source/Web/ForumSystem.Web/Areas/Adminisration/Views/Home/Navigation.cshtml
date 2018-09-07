@@ -1,9 +1,21 @@
-﻿@{
+﻿@using ForumSystem.Web.Areas.Adminisration.Controllers
+@model IEnumerable<Product>
+@{
     ViewBag.Title = "Navigation";
 }
 
 <h2>Navigation</h2>
 
 @(Html.Kendo()
-            .Calendar()
-            .Name("calendar"))
+               .Grid<Product>(Model)
+               .Name("grid")
+               .Columns(coluums =>
+               {
+                   coluums.Bound(pr => pr.Id);
+                   coluums.Bound(pr => pr.Name);
+                   coluums.Bound(pr => pr.Price);
+               })
+               .Sortable()
+               .Pageable()
+               .Filterable()
+               .Groupable())
