@@ -1,0 +1,17 @@
+﻿@using ForumSystem.Web.Areas.Adminisration.ViewModels.Posts
+@{
+    ViewBag.Title = "Post";
+    const string ControllerName = "Post";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@(Html.Kendo()
+        .Grid<PostViewModel>()
+        .Name("grid")
+        .DataSource(data =>
+            data
+                .Ajax()
+                .Read(read => read.Action("Read", ControllerName)))
+)
+

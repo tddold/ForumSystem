@@ -11,25 +11,27 @@ namespace ForumSystem.Web.Controllers
 {
     public class HomeController : BaseController
     {
-        private readonly IForumSystemData posts;
+        private readonly IForumSystemData data;
         //private IMappingService mappingService;
         //private readonly IMapper mapper;
 
-        public HomeController(IForumSystemData posts)
-            : base(posts)
+        public HomeController(IForumSystemData data)
+            : base(data)
         {
-            this.posts = posts;
+            this.data = data;
             //this.mapper = mapper;
             //this.mappingService = mappingService;
         }
-
 
         public ActionResult Index()
         {
             //this.posts.ActualDelete(this.posts.GetById(5));
             //this.posts.SaveChanges();
 
-            var postsAll = this.posts.Posts.All().ToArray();
+            var postsAll = this.data
+                .Posts
+                .All()
+                .ToArray();
             //var testPost = this.posts.All().Where(p => p.Title != null).Single();
             //var test = this.mapper.Map<Post, IndexForumSystemPostViewModel>(testPost);
             //var allPosts = this.mappingService.MapCollection<IndexForumSystemPostViewModel>(posts);

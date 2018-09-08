@@ -218,7 +218,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Adminisration\AdminisrationAreaRegistration.cs" />
-    <Compile Include="Areas\Adminisration\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Adminisration\Controllers\Base\AdminController.cs" />
     <Compile Include="Areas\Adminisration\Controllers\BaseController.cs" />
     <Compile Include="Areas\Adminisration\Controllers\HomeController.cs" />
     <Compile Include="Areas\Adminisration\Controllers\PostController.cs" />
@@ -499,6 +499,7 @@
     <Content Include="Areas\Adminisration\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Adminisration\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Adminisration\Views\Home\Navigation.cshtml" />
+    <Content Include="Areas\Adminisration\Views\Post\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -1315,7 +1316,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Adminisration\Views\Post\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
