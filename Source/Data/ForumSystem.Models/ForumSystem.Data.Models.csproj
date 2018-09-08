@@ -68,6 +68,10 @@
       <Project>{258345a8-9d84-45d0-9f10-561942b8573c}</Project>
       <Name>ForumSystem.Data.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ForumSystem.Data.Contracts\ForumSystem.Data.Contracts.csproj">
+      <Project>{f2114ba9-7ea0-4bde-9f86-2f446bd2f3c0}</Project>
+      <Name>ForumSystem.Data.Contracts</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

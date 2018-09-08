@@ -1,4 +1,4 @@
-﻿namespace ForumSystem.Data.Common.Repository
+﻿namespace ForumSystem.Data.Repository
 {
     using System.Linq;
 

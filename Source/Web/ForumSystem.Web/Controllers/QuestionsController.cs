@@ -1,10 +1,7 @@
-﻿using ForumSystem.Data.Common.Repository;
+﻿using ForumSystem.Data.Repository;
 using ForumSystem.Data.Models;
 using ForumSystem.Web.InputModels.Questions;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using ForumSystem.Web.ViewModels.Questions;
 using ForumSystem.Web.Infrastructure;

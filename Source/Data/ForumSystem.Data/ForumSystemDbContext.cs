@@ -9,24 +9,26 @@ using System.Linq;
 
 namespace ForumSystem.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ForumSystemDbContext : IdentityDbContext<ApplicationUser>, IForumSystemDbContext
     {
-        public ApplicationDbContext()
+        public ForumSystemDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ForumSystemDbContext, Configuration>());
 
 
         }
 
-        public static ApplicationDbContext Create()
+        public static ForumSystemDbContext Create()
         {
-            return new ApplicationDbContext();
+            return new ForumSystemDbContext();
         }
 
         public IDbSet<Tag> Tags { get; set; }
 
         public IDbSet<Post> Posts { get; set; }
+
+        public DbContext DbContext => this;
 
         public override int SaveChanges()
         {
@@ -57,6 +59,16 @@ namespace ForumSystem.Data
                     entity.ModifiedOn = DateTime.Now;
                 }
             }
+        }
+
+        //IDbSet<T> IForumSystemDbContext.Set<T>()
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        public new IDbSet<T> Set<T>() where T : class
+        {
+            return base.Set<T>();
         }
     }
 }

@@ -54,14 +54,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationDbContext.cs" />
+    <Compile Include="ForumSystemData.cs" />
+    <Compile Include="ForumSystemDbContext.cs" />
+    <Compile Include="IForumSystemData.cs" />
+    <Compile Include="IForumSystemDbContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\DeletableEntityRepository.cs" />
+    <Compile Include="Repository\GenericRepository.cs" />
+    <Compile Include="Repository\IDeletableEntityRepository.cs" />
+    <Compile Include="Repository\IRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ForumSystem.Data.Common\ForumSystem.Data.Common.csproj">
       <Project>{258345a8-9d84-45d0-9f10-561942b8573c}</Project>
       <Name>ForumSystem.Data.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ForumSystem.Data.Contracts\ForumSystem.Data.Contracts.csproj">
+      <Project>{f2114ba9-7ea0-4bde-9f86-2f446bd2f3c0}</Project>
+      <Name>ForumSystem.Data.Contracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\ForumSystem.Models\ForumSystem.Data.Models.csproj">
       <Project>{79f5b146-4ae0-46d1-ba50-c7b69538807c}</Project>

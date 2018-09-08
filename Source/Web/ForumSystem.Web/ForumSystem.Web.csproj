@@ -218,7 +218,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Adminisration\AdminisrationAreaRegistration.cs" />
+    <Compile Include="Areas\Adminisration\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Adminisration\Controllers\BaseController.cs" />
     <Compile Include="Areas\Adminisration\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Adminisration\Controllers\PostController.cs" />
+    <Compile Include="Areas\Adminisration\ViewModels\Base\AdministrationViewModel.cs" />
+    <Compile Include="Areas\Adminisration\ViewModels\Posts\PostViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -1310,7 +1315,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Adminisration\Models\" />
+    <Folder Include="Areas\Adminisration\Views\Post\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -1327,6 +1332,10 @@
     <ProjectReference Include="..\..\Data\ForumSystem.Data.Common\ForumSystem.Data.Common.csproj">
       <Project>{258345a8-9d84-45d0-9f10-561942b8573c}</Project>
       <Name>ForumSystem.Data.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\ForumSystem.Data.Contracts\ForumSystem.Data.Contracts.csproj">
+      <Project>{F2114BA9-7EA0-4BDE-9F86-2F446BD2F3C0}</Project>
+      <Name>ForumSystem.Data.Contracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Data\ForumSystem.Data\ForumSystem.Data.csproj">
       <Project>{ee4ab2fb-63ac-4cb5-b4c1-96bb1c7ccf31}</Project>

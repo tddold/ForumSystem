@@ -1,4 +1,4 @@
-﻿namespace ForumSystem.Data.Common.Repository
+﻿namespace ForumSystem.Data.Repository
 {
     using System;
     using System.Data.Entity;
@@ -6,11 +6,12 @@
     using System.Linq;
 
     using ForumSystem.Data.Common.Models;
+    using ForumSystem.Data.Contracts;
 
     public class DeletableEntityRepository<T> : GenericRepository<T>, IDeletableEntityRepository<T>
-        where T : class, IDeletableEntity
+        where T : class, IDeletableEntity, IEntity
     {
-        public DeletableEntityRepository(DbContext context)
+        public DeletableEntityRepository(IForumSystemDbContext context)
             : base(context)
         {
         }

@@ -4,15 +4,11 @@
 namespace ForumSystem.Web.App_Start
 {
     using System;
-    using System.Data.Entity;
     using System.Web;
-    using AutoMapper;
     using ForumSystem.Data;
-    using ForumSystem.Data.Common.Repository;
+    using ForumSystem.Data.Repository;
     using ForumSystem.Data.Models;
     using ForumSystem.Web.Infrastructure;
-    using ForumSystem.Web.Infrastructure.Mapping;
-    using ForumSystem.Web.Infrastructure.Mapping.Contracts;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
     using Ninject;
@@ -68,7 +64,9 @@ namespace ForumSystem.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<DbContext>().To<ApplicationDbContext>();
+            kernel.Bind<IForumSystemDbContext>().To<ForumSystemDbContext>();
+
+            kernel.Bind<IForumSystemData>().To<ForumSystemData>();
 
             kernel.Bind(typeof(IRepository<Post>)).To(typeof(IDeletableEntityRepository<Post>));
 
@@ -77,6 +75,7 @@ namespace ForumSystem.Web.App_Start
 
             kernel.Bind(typeof(IRepository<>))
                 .To(typeof(GenericRepository<>));
+
 
             kernel.Bind<ISanitizer>().To<HtmlSanitizerAdapter>();
 

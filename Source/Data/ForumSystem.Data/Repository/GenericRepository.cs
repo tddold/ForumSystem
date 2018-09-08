@@ -1,13 +1,14 @@
-﻿namespace ForumSystem.Data.Common.Repository
+﻿namespace ForumSystem.Data.Repository
 {
+    using ForumSystem.Data.Contracts;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Linq;
 
-    public class GenericRepository<T> : IRepository<T> where T : class
+    public class GenericRepository<T> : IRepository<T> where T : class, IEntity
     {
-        public GenericRepository(DbContext context)
+        public GenericRepository(IForumSystemDbContext context)
         {
             if (context == null)
             {
@@ -20,7 +21,7 @@
 
         protected IDbSet<T> DbSet { get; set; }
 
-        protected DbContext Context { get; set; }
+        protected IForumSystemDbContext Context { get; set; }
 
         public virtual IQueryable<T> All()
         {

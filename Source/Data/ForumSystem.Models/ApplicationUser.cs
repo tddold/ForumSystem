@@ -1,5 +1,6 @@
 ﻿
 using ForumSystem.Data.Common.Models;
+using ForumSystem.Data.Contracts;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ForumSystem.Data.Models
 {
-    public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
+    public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity, IEntity
     {
         public ApplicationUser()
         {
