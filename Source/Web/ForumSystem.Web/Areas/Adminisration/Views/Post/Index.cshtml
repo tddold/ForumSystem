@@ -7,11 +7,33 @@
 <h2>@ViewBag.Title</h2>
 
 @(Html.Kendo()
-        .Grid<PostViewModel>()
-        .Name("grid")
-        .DataSource(data =>
-            data
-                .Ajax()
-                .Read(read => read.Action("Read", ControllerName)))
+                .Grid<PostViewModel>()
+                .Name("grid")
+                .Columns(cols =>
+                {                    
+                    cols.Bound(pr => pr.Id);
+                    cols.Bound(pr => pr.Title);
+                    cols.Bound(pr => pr.AuthorId);
+                    cols.Bound(pr => pr.Author);
+                    cols.Bound(pr => pr.Content).Encoded(false);
+                    cols.Bound(pr => pr.CreatedOn).Hidden();
+                    cols.Bound(pr => pr.ModifiedOn).Hidden();
+                    cols.Command(com => com.Edit()).Title("Промяна");
+                    cols.Command(com => com.Destroy()).Title("Изтриване");
+                })
+                .ColumnMenu()
+                .Pageable(page => page.Refresh(true))
+                .Sortable()
+                .Groupable()
+                .Editable(edit => edit.Mode(GridEditMode.PopUp))
+                .ToolBar(toolbar => toolbar.Create())
+                .DataSource(data =>
+                    data
+                        .Ajax()
+                        .Model(m => m.Id(post => post.Id))
+                        .Read(read => read.Action("Read", ControllerName))
+                        .Create(create => create.Action("Create", ControllerName))
+                        .Update(update => update.Action("Update", ControllerName))
+                        .Destroy(destriy => destriy.Action("Destroy", ControllerName)))
 )
 

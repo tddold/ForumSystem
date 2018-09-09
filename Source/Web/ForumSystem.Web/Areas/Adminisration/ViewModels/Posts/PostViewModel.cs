@@ -1,5 +1,6 @@
 ﻿using ForumSystem.Data.Models;
 using ForumSystem.Web.Areas.Adminisration.ViewModels.Base;
+using ForumSystem.Web.Infrastructure.Mapping;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,10 +10,13 @@ using System.Web.Mvc;
 
 namespace ForumSystem.Web.Areas.Adminisration.ViewModels.Posts
 {
-    public class PostViewModel : AdministrationViewModel
+    public class PostViewModel : AdministrationViewModel, IMapFrom<Post>
     {
         [HiddenInput(DisplayValue = false)]
         public int? Id { get; set; }
+
+        [HiddenInput(DisplayValue = false)]
+        public string UserId { get; set; }
 
         [Display(Name = "Заглавие")]
         [Required]
@@ -20,9 +24,9 @@ namespace ForumSystem.Web.Areas.Adminisration.ViewModels.Posts
         public string Title { get; set; }
 
         [HiddenInput(DisplayValue = false)]
-        public string AuthorId { get; set; }
+        public int AuthorId { get; set; }
 
-        [Required]
+        //[Required]
         [Display(Name = "Автор")]
         [StringLength(100, MinimumLength = 3)]
         public virtual ApplicationUser Author { get; set; }
@@ -32,8 +36,8 @@ namespace ForumSystem.Web.Areas.Adminisration.ViewModels.Posts
         [StringLength(1000, MinimumLength = 2)]
         public string Content { get; set; }
 
-        public bool IsDeleted { get; set; }
+        //public bool IsDeleted { get; set; }
 
-        public DateTime? DeletedOn { get; set; }
+        //public DateTime? DeletedOn { get; set; }
     }
 }

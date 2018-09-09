@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ForumSystem.Web.Areas.Adminisration.ViewModels.Base
@@ -11,10 +8,10 @@ namespace ForumSystem.Web.Areas.Adminisration.ViewModels.Base
     {
         [Display(Name = "Добавено на")]
         [HiddenInput(DisplayValue = false)]
-        DateTime CreatedOn { get; set; }
+        public DateTime CreatedOn { get; set; }
 
         [Display(Name = "Променено на")]
         [HiddenInput(DisplayValue = false)]
-        DateTime? ModifiedOn { get; set; }
+        public DateTime? ModifiedOn { get; set; }
     }
 }
